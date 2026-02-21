@@ -1,4 +1,4 @@
-### Week 0: Key concepts and themes
+### Week 0: Key concepts and themes (Jan 20, 2026)
 - Discrete-time signals, e.g.,
   - unit impulse $\delta[n]$
   - unit step $u[n]$
