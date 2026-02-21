@@ -2,7 +2,7 @@
 - Discrete-time signals, e.g.,
   - unit impulse $\delta[n]$
   - unit step $u[n]$
-  - exponential signals $a^n$
+  - exponential signals $a^n$, $e^{j\omega n}$
 - Discrete-time systems
   - Focus of ECE503 is on linear time-invariant (LTI) systems 
 - Representations of systems:
