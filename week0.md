@@ -1,0 +1,16 @@
+### Week 0: Key concepts and themes
+- Discrete-time signals, e.g.,
+  - unit impulse $\delta[n]$
+  - unit step $u[n]$
+  - exponential signals $a^n$
+- Discrete-time systems
+  - Focus of ECE503 is on linear time-invariant (LTI) systems 
+- Representations of systems:
+  - Linear constant coefficient difference equations
+  - Impulse response $h[n]$
+- Other system properties: 
+  - BIBO stability
+  - Causal 
+  - Memoryless
+- Convolution
+  - only useful for LTI systems (this is a consequence of the linearity and time invariance of the system)
