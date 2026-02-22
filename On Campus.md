@@ -73,7 +73,7 @@
 - Processing analog signals with DT systems (4.1)
 - Designing digital filters via the impulse invariance method (4.2)
   - this is one specific technique (we will learn more techniques later in this course)
-  - Frequency response of the DT system ($H(e^{j\omega})$) is not identical to the frequency response of the CT system ($H(j\Omega)$), however.
+  - Frequency response of the DT system $H(e^{j\omega})$ is not identical to the frequency response of the CT system $H(j\Omega)$, even with $\Omega = \omega/T$, however.
     - Periodicity on $\omega$ axis (not on $\Omega$ axis prior to multiplication by pulse train)
     - Aliasing can also cause $H(e^{j\omega})$ to not be a close match to $H(j\Omega)$ between $-\pi$ and $\pi$
 - Multirate (4.3 - 4.6)
