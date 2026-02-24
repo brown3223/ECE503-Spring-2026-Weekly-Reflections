@@ -85,5 +85,21 @@
 - Polyphase filtering (screencast 4.5) and filter banks (screencast 4.6)
 - Matlab: `impinvar`, `tf`, `impulse`, `step`, `downsample`, `upsample`, `upfirdn`, `resample`
 
+# Week 5: Feb 24, 2026
+- Practical issues in processing CT signals with DT systems
+- Dealing with potential aliasing
+  - anti-aliasing filters (requires a CT filter at the front end of the system)
+  - key idea: do basic CT-AAF, oversample, do a much sharper DT-AAF, then downsample (cheaper, reconfigurable, ...)
+  - another key idea: you can shape the spectrum of your DT-AAF to compensate/equalize any rolloff in your CT-AAF
+- Quantizing
+  - Propagation of the quantization noise to the output of your system (filters, down/up sampling, ...)
+  - SNR calculations (assumes certain statistical properties about the noise)
+  - Basic quantization $\Rightarrow$ SNR
+  - Oversampled quantization (with filtering and downsampling) $\Rightarrow$ usually better SNR
+  - Oversampled quantization with noise shaping (with filtering and downsampling) $\Rightarrow$ usually even better SNR
+  - Same concepts that we learned for ADCs apply to DACs
+  - Refer back to Screencast 1.6 for some background material that may be relevant
+- Lots of oversampling
+
 
 
