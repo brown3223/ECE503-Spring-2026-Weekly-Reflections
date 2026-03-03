@@ -101,5 +101,19 @@
   - Refer back to Screencast 1.6 for some background material that may be relevant
 - Lots of oversampling
 
+# Week 6: Mar 3, 2026
+- Phase delay and group delay
+- Linear phase systems (phase delay = group delay, both are constant over $\omega$)
+- Inverse systems: $H(z) H_i(z) = \delta[n]$
+  - Can I build a causal/stable inverse system $H_i(z)$? Depends on the locations of the poles and zeros of the system you are trying to invert.
+  - Generalized inverse: $H(z) H_i(z) = \delta[n-n_0]$
+  - Minimum phase systems: all zeros are inside the unit circle
+  - Inverse systems inside multirate blocks
+- Intuition: connecting $z$-plane pole/zero plots to magnitude response and phase response (and being able to quickly identify the type of filter from the pole/zero plots, e.g., LPF, HPF, bandstop, ...)
+- Inferring $H(z)$ from $|H(e^{j\omega})|^2$
+  - non-uniqueness of $H(z)$
+  - requiring stable+causal: must pick poles from inside the unit circle (poles become unique)
+  - zeros are not unique: need additional criteria, e.g., we could require $H(z)$ to be a minimum phase system to make the zero unique
+- Matlab: `phasedelay`, `grpdelay`, `zplane`, `freqz`, `roots`, `poly` (seen before)
 
 
