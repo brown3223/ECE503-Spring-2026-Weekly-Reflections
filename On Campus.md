@@ -82,6 +82,19 @@
   - Multirate filter banks (4.6)
 - Matlab: `impinvar`, `tf`, `impulse`, `step`, `downsample`, `upsample`, `upfirdn`, `resample`
 
+# Week 5 - class canceled
 
-
+# Week 6: Mar 4, 2026
+- Phase delay and group delay (both are units of samples)
+- Linear phase systems have constant phase delay and constant group delay (all frequencies delayed by the same amount of time)
+- Inverse systems: $H(z)H_i(z) = 1$
+- Generalized inverse systems: $H(z)H_i(z) = z^{-n_0}$
+- Inverse systems with oversampling (advanced topic, no practice problems, but could be useful)
+- Minimum phase systems (all zeros inside the unit circle)
+- Inferring magnitude and phase response from pole/zero plots
+- How to determine poles and zeros of $H(z)$ from $|H(e^{j\omega})|^2$.
+  - If we require $H(z)$ to be causal and stable, then the poles are uniquely determined
+  - Cannot uniquely determine the zeros without the phase response or additional restrictions
+  - If we require minimum phase, then the zeros are unique
+- Matlab: `phasedelay`, `grpdelay`, `zplane`, `freqz`, `roots`, `poly`
 
