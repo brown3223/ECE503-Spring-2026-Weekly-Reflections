@@ -116,4 +116,18 @@
   - zeros are not unique: need additional criteria, e.g., we could require $H(z)$ to be a minimum phase system to make the zero unique
 - Matlab: `phasedelay`, `grpdelay`, `zplane`, `freqz`, `roots`, `poly` (seen before)
 
-
+# Week 7: Mar 17, 2026
+- All-pass systems
+  - Only affect the phase of the signal at the input (magnitude is constant)
+  - First order all-pass filter $H(z) = \frac{1 - a^* z}{1-az^{-1}}$ (IIR filter)
+  - Cascaded APFs -> higher order APF
+- Minimum phase systems
+  - Definition: LTI, causal, stable, and has a causal stable inverse
+    - poles inside the unit circle (consequence of causality and stability)
+    - zeros inside the unit circle (since inverse must be stable)
+    - minimum group delay, minimum energy delay, minimum phase delay (properties that follow from the definition)
+  - Any causal stable $H(z)$ can be decomposed into a causal stable $H_{min}(z)$ and a causal stable $H_{ap}(z)$.
+  - Application: for any causal stable $H(z)$, we can invert the minimum phase part, i.e., $G(z) = (H_{min}(z))^{-1}$, and then $H(z)G(z) = H_{ap}(z)$. In general, we can equalize the magnitude response by inverting the minimum phase system, but some phase distortion will remain (which we can correct with more all pass filters as shown in Screencast 7-2).
+- Linear phase and generalized linear phase FIR filters
+  - Type I, II, III, IV FIR filters (not an exhaustive catalog of GLP filters)
+- Matlab: `isallpass` and `iirgrpdelay`
