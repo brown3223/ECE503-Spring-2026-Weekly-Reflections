@@ -98,3 +98,19 @@
   - If we require minimum phase, then the zeros are unique
 - Matlab: `phasedelay`, `grpdelay`, `zplane`, `freqz`, `roots`, `poly`
 
+# Week 7: Mar 18, 2026
+- All-pass filter (only changes the phase, can also apply a constant scaling to the magnitude response, but the magnitude response is flat)
+  - Useful for equalizing the group delay over a range of frequencies
+  - First order all-pass filter $H(z) = \frac{1-a^* z}{1 - az^{-1}}$ with $|a|<1$ for stability.
+- Minimum-phase systems
+  - All the poles and zeros are inside the unit circle, LTI, causal, stable
+  - Alternatively: LTI, causal, stable, and has a causal, stable inverse
+  - To resolve ambiguities, we should also require $H(e^{j0}) > 0$ to achieve the minimum phase delay.
+  - Minimum phase $\Rightarrow$ minimum group delay and minimum energy delay
+- Minimum-phase all-pass decomposition $H(z) = H_{min}(z) H_{ap}(z)$.
+  - Main utility of this is that we can invert $H_{min}(z)$, i.e., $G(z) = (H_{min}(z))^{-1}$. Then $H(z)G(z) = H_{ap}(z)$ and we can correct the residual phase distortion with an all-pass filter.
+- Generalized linear phase systems
+  - Type I, II, III, IV FIR filters with GLP (distinguished by symmetry vs. anti-symmetry and even vs. odd orders)
+  - There are other ways to generate GLP filters beyond these four types (see page 325 of textbook for an IIR filter with group delay of 4.3 samples)
+- Note: negative group delay does not necessarily imply a filter is non-causal (see example on page 316 of your textbook, and also see the paper uploaded to Canvas)
+- Matlab: `isallpass`, `iirgrpdelay`
