@@ -114,3 +114,16 @@
   - There are other ways to generate GLP filters beyond these four types (see page 325 of textbook for an IIR filter with group delay of 4.3 samples)
 - Note: negative group delay does not necessarily imply a filter is non-causal (see example on page 316 of your textbook, and also see the paper uploaded to Canvas)
 - Matlab: `isallpass`, `iirgrpdelay`
+
+# Week 8: March 25, 2026
+- Realizing discrete time systems and actually implementing them ("realization structures")
+- Direct Form I
+- Direct Form II (less memory than Direct Form I, same amount of computation though)
+- Cascaded forms (Matlab filter designer calls these "second order sections")
+- Parallel forms (not commonly used, not an option in Matlab filter designer)
+- FIR lattice
+- IIR all pole lattice
+- Transposed forms (reverse all flows, pickoff points become sums, sums become pickoff points, swap input and output, redraw the whole thing with the input on the left and the output on the right)
+- The main differences are: memory, computation
+- Next week we will get into realization structure robustness to finite precision effects
+- Matlab: `filterDesigner`, `tf2latc`, `latc2tf`
