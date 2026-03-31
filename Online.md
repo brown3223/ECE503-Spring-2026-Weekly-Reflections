@@ -131,3 +131,20 @@
 - Linear phase and generalized linear phase FIR filters
   - Type I, II, III, IV FIR filters (not an exhaustive catalog of GLP filters)
 - Matlab: `isallpass` and `iirgrpdelay`
+
+# Week 8: Mar 24, 2026
+- Skipped (most of the discussion was about the project)
+
+# Week 9: Mar 31, 2026
+- Finite-precision effects on filtering
+- Coefficient quantization
+  - Fixed-point representations of real numbers
+  - Analysis of the effect on FIR filters (9.2) and IIR filters (9.3)
+  - Causes the poles and zeros of your filter to move (might even make your filter unstable if one or more poles move outside the unit circle)
+  - For IIR filters, the most common realization structure is Direct Form II in cascaded second order sections (DFII-SOS) due to its robustness to the effects of coefficient quantization
+  - Play around with `filterDesigner` in Matlab
+- Product roundoff error
+  - This is a consequence of not being able to store the full precision of multiplications in a DSP algorithm
+  - Product roundoff noise is modeled in the same way that we modeled quantization error when we were studying ADC (see material from Week 5)
+  - We can use superposition to analyze the effect of each product roundoff noise as it appears at the output of the system
+  - Typically, we prefer a realization structure with less product roundoff noise at the output
