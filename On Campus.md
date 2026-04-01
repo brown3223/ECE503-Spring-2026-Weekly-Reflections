@@ -127,3 +127,28 @@
 - The main differences are: memory, computation
 - Next week we will get into realization structure robustness to finite precision effects
 - Matlab: `filterDesigner`, `tf2latc`, `latc2tf`
+
+# Week 9: April 1, 2026
+- Finite-precision effects in filtering
+- Coefficient quantization
+  - Floating-point representation of real numbers (easy)
+  - Fixed-point representation of real numbers (harder, the focus this week)
+    - Fractional bits
+  - FIR filters (equalivalent parallel system, can bound errors)
+  - IIR filters (more difficult to analyze, best done numerically in `filterDesigner`)
+    - Poles can move outside the unit circle and make an IIR filter unstable
+    - A good choice for a realization structure for IIR filters is usually cascaded DFII second order sections (this is what `filterDesigner` defaults to)
+  - Why is the cascaded DFII-SOS realization structure so robust to coefficient quantization?
+    - Localizes the quantization effects to pairs of poles and pairs of zeros rather than all poles/zeros
+    - Reduces the dynamic range between the largest and smallest coefficients in each section
+  - Coupled form (uniform distribution of achievable poles/zeros on the z-plane, more computation however)
+- Product roundoff error
+  - More amenable to analysis
+  - Model the error as uniformly distributed, white noise with known variance (like we did for ADCs)
+  - Use superposition
+  - Determine the transfer function from the noise source to the output
+  - Compute the PSD or autocorrelation function at the output, then total power
+- In textbook (not covered in the screencasts)
+  - Avoiding overflow
+  - Fixed-point limit cycles
+  - Appendix A gives some useful results for how to compute the integrals involved in noise power calculations
