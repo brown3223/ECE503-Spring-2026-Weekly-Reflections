@@ -148,3 +148,17 @@
   - Product roundoff noise is modeled in the same way that we modeled quantization error when we were studying ADC (see material from Week 5)
   - We can use superposition to analyze the effect of each product roundoff noise as it appears at the output of the system
   - Typically, we prefer a realization structure with less product roundoff noise at the output
+
+# Week 10: Apr 7, 2026
+- Discrete time IIR filter design
+  - Classical DSP problem - emulating analog filters with DSP
+  - Can design DT filters by designing CT filters and doing all steps with pencil and paper (not iterative procedure, like FIR filters)
+- Impulse invariance
+  - The limitation of impulse invariance is that the frequency response can be distorted due to aliasing (usually not a problem for lowpass filters, could be a problem for bandpass filters, definitely a problem for highpass filters and bandstop filters)
+- Bilinear transform (a better choice in most cases than impulse invariance)
+  - Preserves minimum phase, allpass, cascaded forms, and DC gain
+  - Especially useful for highpass filters and bandstop filters (filters that would result in aliasing if impulse invariance were used)
+  - No aliasing due to the one to one mapping between $\Omega$ and $\omega$
+  - In some ways, bilinear is easier to implement analytically since you can go directly from $H_c(s)$ to $H(z)$
+- Frequency transformations $\rightarrow$ designing BPF, HPF, BSF using a "prototype" LPF
+- Matlab: `impinvar`, `bilinear`
