@@ -152,3 +152,30 @@
   - Avoiding overflow
   - Fixed-point limit cycles
   - Appendix A gives some useful results for how to compute the integrals involved in noise power calculations
+
+# Week 10: April 8, 2026
+- Designing discrete time filters
+- IIR vs. FIR
+  - IIR: fewer coefficients (less computation) to achieve a desired response, useful for emulating filters we used to build with analog components, can be designed analytically with pencil and paper
+  - FIR: always stable, generalized linear phase, good pipelining in most DSP hardware
+- Focus this week was on IIR filters since we can design them analytically
+- Steps to design a LPF:
+  - Filter specification with passband and stopband frequencies on the DT frequuency axis $\omega$
+  - Translate DT filter specification to a CT filter specifiation on the CT frequency axis $\Omega$
+    - Impulse invariance $\Omega = \omega/T_d$ where $T_d$ is the sampling period
+    - Bilinear transform $\Omega = \frac{2}{T_d}\tan (\omega/2)$
+  - Design your CT filter (Butterworth, Cheby I/II, equiripple) $\rightarrow H_c(s)$
+  - If using impulse invariance:
+    - Inverse Laplace transform $H_c(s) \rightarrow h_c(t)$ to get impulse reponse
+    - Sample the impulse response (with the same $T_d$ as before) to get $h[n] = h_c(nT_d)$
+    - Finally, compute the $z$-transform $h[n] \rightarrow H(z)$
+  - If using bilinear transform:
+    - Take $H_c(s)$, substitute in $s=\frac{2}{T_d} \left( \frac{1-z^{-1}}{1+z^{-1}} \right)$ to get $H(z)$
+- Why choose impulse invariance? Need to match an impulse response of something. Not used that often.
+- Why choose bilinear transform?
+  - Less steps
+  - Preserves cascaded filters
+  - Preserves minimum phase
+  - Preserves DC gain
+  - Does not suffer from aliasing, hence can be used for more than just LPF. Can be used for HPF, BPF (can usually also work with impulse invariance), and BSF
+- Designing HPF, BPF, and BSF involves mapping band edge frequencies to a "prototype" LPF and the doing the design as above, and then mapping the LPF back to the HPF, BPF, or BSF
