@@ -164,7 +164,7 @@
   - Translate DT filter specification to a CT filter specifiation on the CT frequency axis $\Omega$
     - Impulse invariance $\Omega = \omega/T_d$ where $T_d$ is the sampling period
     - Bilinear transform $\Omega = \frac{2}{T_d}\tan (\omega/2)$
-  - Design your CT filter (Butterworth, Cheby I/II, equiripple) $\rightarrow H_c(s)$
+  - Design your CT filter (Butterworth, Cheby I/II, elliptical) $\rightarrow H_c(s)$
   - If using impulse invariance:
     - Inverse Laplace transform $H_c(s) \rightarrow h_c(t)$ to get impulse reponse
     - Sample the impulse response (with the same $T_d$ as before) to get $h[n] = h_c(nT_d)$
