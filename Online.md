@@ -162,3 +162,21 @@
   - In some ways, bilinear is easier to implement analytically since you can go directly from $H_c(s)$ to $H(z)$
 - Frequency transformations $\rightarrow$ designing BPF, HPF, BSF using a "prototype" LPF
 - Matlab: `impinvar`, `bilinear`
+
+# Week 11: Apr 14, 2026
+- Up until this week, the only frequency domain tool you have is the DTFT
+  - DTFT: mapping from a discrete-time signal (finite length, infinite length, periodic, ...) to the $\omega$ axis (the normalized continuous frequency axis)
+- Discrete Fourier Transform (DFT)
+  - Mapping from a *finite-length* (length $N$) discrete-time signal to a *discrete* frequency axis $k=0,1,\dots,N-1$.
+  - The DFT is a sampled version (*sampled on the $\omega$ axis*) of the DTFT. $\omega = 2\pi k/N$ for $k=0,1,\dots,N-1$.
+  - Review: sampling in the time domain and doing a DTFT creates $H(e^{j\omega})$ which is periodic in the freuqency domain (period $2\pi$).
+  - New concept: sampling in the frequency domain (DTFT $\rightarrow$ DFT) and then doing an IDFT creates a discrete-time signal that is periodic in the time domain (this can lead to ``time-domain aliasing'' as discussed in several practice problems)
+  - Recall: convolution in the time domain $\Leftrightarrow$ multiplication in the frequency domain (DTFT)
+  - The DFT doesn’t work this way. Multiplication of two DFT vectors is equivalent to *circular* convolution (not linear convolution, which is what we normally think of when we discuss convolution)
+  - To use the DFT to compute a linear convolution, the common approach is to zero pad your finite length signals, take the DFT of each, multiply (element-wise), and then do the IDFT
+  - In Matlab and other programming languages, we always use the FFT to compute the DFT (much faster, same result)
+- Discrete Fourier Series (DFS)
+  - only applies to infinite length periodic signals (period $N$)
+  - Mapping from infinite length periodic discrete-time signals to a *discrete* frequency axis for all integer $k$
+  - Close relationship between the DFT coefficients $X[k]$ and the DFS coefficients $\tilde{X}[k]$.
+  - Can't use the DFS to do linear convolution (unless you do enough zero padding). Multiplying DFS coefficients is equivalent in the time domain to *periodic* convolution.
