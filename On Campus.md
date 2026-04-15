@@ -179,3 +179,25 @@
   - Preserves DC gain
   - Does not suffer from aliasing, hence can be used for more than just LPF. Can be used for HPF, BPF (can usually also work with impulse invariance), and BSF
 - Designing HPF, BPF, and BSF involves mapping band edge frequencies to a "prototype" LPF and the doing the design as above, and then mapping the LPF back to the HPF, BPF, or BSF
+
+# Week 11: April 15, 2026
+- Up until this week, the only frequency domain tool you have had experience with is the DTFT
+  - Pretty general mapping from a wide class of discrete time signals to a continuous frequency representation for all $\omega$ on the real line
+  - DTFT is useful for analysis, but not useful for algorithmic applications of frequency domain techniques
+- Finite length sequences and periodic extensions
+- The Discrete Fourier Transform (DFT) (in practice, we use the FFT)
+  - Only works for finite length signals
+  - Mapping from finite-length discrete time signals to a discrete frequency representation for $k=0,\dots,N-1$
+  - The FFT is the basis for a lot of high-speed real-time DSP algorithms
+  - The DFT is a sampled version of the DTFT: $X[k] = X(e^{j\omega})$ at $\omega = k 2\pi /N$ for $k=0,\dots,N-1$
+  - Easy to calculate the DFT using matrix multiplication
+  - A key difference wrt to the DTFT is the convolution property - multiplication of two DFTs is not equivalent to linear convolution (it is equivalent to circular convolution)
+  - You can still force the DFT to do linear convolution if you provide sufficient zero padding to the input signals
+  - Without sufficient zero padding, you will observe time-domain aliasing
+- The Discrete Fourier Series (DFS)
+  - Only works for infinite length periodic signals
+  -  Mapping from infinite-length periodic discrete time signals to a discrete frequency representation $\tilde{X}[k]$ for all integer $k$
+  -  Since $\tilde{X}[k]$ is periodic, we typically just compute $\tilde{X}[k]$ for $k=0,\dots,N-1$.
+  -  Periodic convolution (bridge between linear convolution and circular conv)
+- Key deeper concept: sampling on the $\omega$ axis can create unexpected issues like time-domain aliasing that we did not see with the DTFT
+- Matlab: `fft`, `ifft`, `cconv`
