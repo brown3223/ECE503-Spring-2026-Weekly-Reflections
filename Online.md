@@ -180,3 +180,24 @@
   - Mapping from infinite length periodic discrete-time signals to a *discrete* frequency axis for all integer $k$
   - Close relationship between the DFT coefficients $X[k]$ and the DFS coefficients $\tilde{X}[k]$.
   - Can't use the DFS to do linear convolution (unless you do enough zero padding). Multiplying DFS coefficients is equivalent in the time domain to *periodic* convolution.
+
+# Week 12: April 21, 2026
+- Applications of the DFT/FFT
+- How to do linear convolution with the FFT (for two finite length signals)
+  - key trick is to zero pad your finite length signals to avoid time domain aliasing -> circular convolution becomes linear convolution
+- How to do linear convolution with the FFT (for one finite length signal and one infinite length signal)
+  - Can't just do zero padding here
+  - Overlap and add
+  - Overlap and save
+  - Both techniques use block-based processing to do fast FIR filtering of streaming signals
+- Windowing (rectangular, Bartlett, Hamming, Kaiser, ...)
+  - Mainlobe width (we would prefer this to be narrow to avoid blurring the spectrum)
+  - Sidelobe height (we would like these to be as low as possible to avoid interfering with other parts of the spectrum)
+  - For a fixed window length, there is a tradeoff between mainlobe width and sidelobe height
+  - Longer windows give narrower mainlobe width
+  - To lower sidelobe height, you can adjust parameters in a Kaiser window
+- Time varying Discrete Fourier Transform (most books call this the Short Time Fourier Transform (STFT))
+  - See Matlab function spectrogram (or maybe specgram)
+  - One key parameter is the window length
+    - Long windows give good frequency resolution, but poor time resolution
+    - Short windows give poor frequency resolution, but good time resolution
