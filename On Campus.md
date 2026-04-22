@@ -201,3 +201,28 @@
   -  Periodic convolution (bridge between linear convolution and circular conv)
 - Key deeper concept: sampling on the $\omega$ axis can create unexpected issues like time-domain aliasing that we did not see with the DTFT
 - Matlab: `fft`, `ifft`, `cconv`
+
+# Week 12: April 22, 2026
+- Using the FFT/DFT to do linear convolution of two finite length signals
+  - Easy: just zero pad
+- Using the FFT/DFT to do fast FIR filtering of an infinite length signal
+  - Block by block processing
+  - Break up the "infinite length" sequence into blocks
+  - Have to do some conditioning on the blocks, e.g., zero padding
+  - Finite length FFT
+  - Multiply in the frequency domain
+  - IFFT
+  - Reassemble the time domain sequence by overlapping and adding or discarding certain samples
+  - Two common methods:
+    - Overlap and add (my preferred method)
+    - Overlap and save (also works, but not as intuitive)
+- Windowing functions
+  - Rectangular (narrowest mainlobe, highest sidelobes)
+  - Hann
+  - Barlett
+  - Blackman? (widest mainlobe, lowest sidelobes)
+  - Kaiser windows
+  - Key tradeoff is resolution (mainlobe width) vs leakage (sidelobe height, relative to mainlobe height)
+  - Only way to improve resolution without making sidelobes worse is to increase the window length
+- Short Time Fourier Transform (STFT)
+  - Key windowing time vs. frequency resolution tradeoff: long windows give good frequency resolution, but poor time resolution. 
